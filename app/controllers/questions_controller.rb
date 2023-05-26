@@ -19,7 +19,11 @@ class QuestionsController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
 
-    @question = Question.new(question_params)
+    @question = Question.new(
+      body:params[:question][:body],
+      user_id:current_user.id,
+      post_id:params[:post_id]
+    )
     
     if @question.save!
       #FIX：posts#showのpathがわからない
