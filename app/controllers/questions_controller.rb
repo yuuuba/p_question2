@@ -7,7 +7,8 @@ class QuestionsController < ApplicationController
     #TODO: postに紐付いたquestionを取得したい == postsのquestion_idとquestion.idが同じものを取得したい
     # find_question
     # Question.where(id: question_id)#ここがおかしい？
-    
+    @questions = @post.questions
+
   end
 
   def new
@@ -22,6 +23,7 @@ class QuestionsController < ApplicationController
     @question = Question.new(
       body:params[:question][:body],
       user_id:current_user.id,
+      #post見つかりませんエラーの原因解決コード
       post_id:params[:post_id]
     )
     
