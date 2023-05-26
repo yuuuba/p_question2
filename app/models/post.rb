@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+  belongs_to :user
   has_many :questions
 
   # TODO:リレーションで参照できない　@post.questions

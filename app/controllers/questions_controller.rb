@@ -12,7 +12,6 @@ class QuestionsController < ApplicationController
 
   def new
     @post = Post.find(params[:post_id])
-    
     @question = Question.new
     @user_id = current_user.id
   end
@@ -42,6 +41,6 @@ class QuestionsController < ApplicationController
   end
 
   def question_params
-    params.require(:question).permit(:body, :user_id, :answer_id)
+    params.require(:question).permit(:body,:post_id,:user_id)
   end
 end

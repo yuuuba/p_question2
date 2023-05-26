@@ -5,4 +5,5 @@
   .form-field
     = f.label :body , "内容"
     = f.text_area :body, class:"textarea textarea-bordered textarea-lg w-full max-w-xs"
+    = f.hidden_field :user_id, value: current_user.id
     = f.submit "投稿する", class: "btn btn-active btn-primary"

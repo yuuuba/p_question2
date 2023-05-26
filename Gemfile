@@ -47,6 +47,8 @@ gem "bootsnap", require: false
 gem 'devise'
 gem 'haml-rails'
 gem 'erb2haml'
+gem 'pry-rails'
+
 
 # Use Sass to process CSS
 # gem "sassc-rails"
