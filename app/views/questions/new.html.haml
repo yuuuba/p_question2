@@ -1,0 +1,4 @@
+= form_with model: [@post, @question] do |form|
+  = form.text_field :body
+  = form.hidden_field :user_id, value: @user_id
+  = form.submit

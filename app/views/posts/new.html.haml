@@ -1,0 +1,8 @@
+= form_with model: @post, local: true do |f|
+  .form-field
+    = f.label :title , "タイトル"
+    = f.text_field :title, class:"input input-bordered input-md w-full max-w-xs"
+  .form-field
+    = f.label :body , "内容"
+    = f.text_area :body, class:"textarea textarea-bordered textarea-lg w-full max-w-xs"
+    = f.submit "投稿する", class: "btn btn-active btn-primary"
