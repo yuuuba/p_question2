@@ -19,6 +19,9 @@ class QuestionsController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
 
+    # * [ruby - How to assign a has\_many/belongs\_to relation properly in Rails ActiveRecord? - Stack Overflow]
+    # ( https://stackoverflow.com/questions/13649540/how-to-assign-a-has-many-belongs-to-relation-properly-in-rails-activerecord )
+
     @question = Question.new(
       body:params[:question][:body],
       user_id:current_user.id,
@@ -31,8 +34,17 @@ class QuestionsController < ApplicationController
     else
       render :new
     end
+
+    # if @post.save!
+    #   redirect_to root_path
+    # else
+    #   render :new
+    # end
     
-    @post.update(question_id: @question.id)
+    @post.update!(question_id: @question.id)
+
+    # @post.question = Question.new(question_params)
+    # @post.save!
   end
 
   def destroy
@@ -45,6 +57,6 @@ class QuestionsController < ApplicationController
   end
 
   def question_params
-    params.require(:question).permit(:body,:post_id,:user_id)
+    params.require(:question).permit(:body, :post_id, :user_id)
   end
 end
