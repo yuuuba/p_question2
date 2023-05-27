@@ -1,2 +1,3 @@
 -@questions.each do |q|
-  =p q.body
+  = p q.body
+  = link_to "回答", new_post_question_answer_path(q.post, q)

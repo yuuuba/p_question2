@@ -8,7 +8,6 @@ class QuestionsController < ApplicationController
     # find_question
     # Question.where(id: question_id)#ここがおかしい？
     @questions = @post.questions
-
   end
 
   def new
@@ -28,7 +27,6 @@ class QuestionsController < ApplicationController
     )
     
     if @question.save!
-      #FIX：posts#showのpathがわからない
       redirect_to root_path
     else
       render :new
