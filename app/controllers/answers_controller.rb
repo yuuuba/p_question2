@@ -14,6 +14,8 @@ class AnswersController < ApplicationController
     @question = Question.find(params[:question_id])
     @answer = Answer.new(answer_params)
 
+    @question.answers << @answer
+
     if @answer.save!
       redirect_to post_questions_path(params[:post_id])
     else

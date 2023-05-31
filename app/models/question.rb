@@ -7,4 +7,8 @@ class Question < ApplicationRecord
   # has_many :posts
   has_many :post_questions
   has_many :posts, through: :post_questions
+
+  def question_answer_check
+    
+  end
 end

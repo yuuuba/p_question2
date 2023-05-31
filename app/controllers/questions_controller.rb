@@ -4,16 +4,16 @@ class QuestionsController < ApplicationController
 
   def index
     @post = Post.find(params[:post_id])
-    #TODO: postに紐付いたquestionを取得したい == postsのquestion_idとquestion.idが同じものを取得したい
-    # find_question
-    # Question.where(id: question_id)#ここがおかしい？
+    @post_user_id = @post.user_id
     @questions = @post.questions
+    
   end
 
   def new
     @post = Post.find(params[:post_id])
     @question = Question.new
     @user_id = current_user.id
+    
   end
 
   def create

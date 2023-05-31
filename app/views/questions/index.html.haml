@@ -1,3 +1,8 @@
--@questions.each do |q|
+- @questions.each do |q|
   = p q.body
-  = link_to "回答", new_post_question_answer_path(question_id: q.id)
+  - if q.answers.present?
+    -  q.answers.each do |a|
+      = p a.body
+    else p "未回答です"
+  - if current_user.id == @post_user_id
+    = link_to "回答", new_post_question_answer_path(question_id: q.id)
