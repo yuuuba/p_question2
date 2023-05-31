@@ -25,9 +25,9 @@ class QuestionsController < ApplicationController
     @question = Question.new(
       body:params[:question][:body],
       user_id:current_user.id,
-      #post見つかりませんエラーの原因解決コード
-      post_id:params[:post_id]
     )
+
+    @post.questions << @question
     
     if @question.save!
       redirect_to root_path
@@ -41,8 +41,6 @@ class QuestionsController < ApplicationController
     #   render :new
     # end
     
-    @post.update!(question_id: @question.id)
-
     # @post.question = Question.new(question_params)
     # @post.save!
   end
@@ -57,6 +55,6 @@ class QuestionsController < ApplicationController
   end
 
   def question_params
-    params.require(:question).permit(:body, :post_id, :user_id)
+    params.require(:question).permit(:body, :user_id)
   end
 end

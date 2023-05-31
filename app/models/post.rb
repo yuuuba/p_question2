@@ -1,13 +1,11 @@
 class Post < ApplicationRecord
   belongs_to :user
-  has_many :questions
+  # has_many :questions
+  # has_many :post_questions
 
-  # TODO:リレーションで参照できない　@post.questions
-  # 設計上postテーブルのquesution_idがnilなデータもあるから..?
-  #TODO: Qurstion.idとpostのquestion_idが同じQuestionのインスタンスを取得したい
-  def find_question
-    #question.idとPostのquestion_idが同じもの
-    # Question.where(id: Post.question_id)#ここがおかしい？
-    Question.where(id: question_id)#ここがおかしい？
-  end
+  # * activerecord - Rails: Cannot have a has\_many :through association before association is defined - Stack Overflow
+  # https://stackoverflow.com/questions/53074430/rails-cannot-have-a-has-many-through-association-before-association-is-defined
+  # has_many :questions
+  has_many :post_questions
+  has_many :questions, through: :post_questions
 end
